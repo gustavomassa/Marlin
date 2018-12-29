@@ -129,7 +129,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "GUSTAVO MASSANEIRO 3D"
+//#define CUSTOM_MACHINE_NAME "GUSTAVO MASSANEIRO 3D"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -751,7 +751,7 @@
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
 #define PROBE_MANUALLY
-//#define MANUAL_PROBE_START_Z 0.2
+//#define MANUAL_PROBE_START_Z 5
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
@@ -816,7 +816,7 @@
  */
 //#define X_PROBE_OFFSET_FROM_EXTRUDER 10  // X offset: -left  +right  [of the nozzle]
 //#define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]
-//#define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
+//#define Z_PROBE_OFFSET_FROM_EXTRUDER -4   // Z offset: -below +above  [the nozzle]
 
 // ANET A8: BELOW IS FOR THE FRONT MOUNTED SENSOR WITH 3D PRINTED MOUNT
 //#define X_PROBE_OFFSET_FROM_EXTRUDER -28  // X offset: -left  +right  [of the nozzle]
@@ -829,9 +829,9 @@
 //#define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
 
 //ANET A6 with BLTouch/3D-Touch mounted right to the nozzel
-#define X_PROBE_OFFSET_FROM_EXTRUDER 39 // X offset: -left  +right  [of the nozzle]
-#define Y_PROBE_OFFSET_FROM_EXTRUDER  0 // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER  0 // Z offset: -below +above  [the nozzle]
+//#define X_PROBE_OFFSET_FROM_EXTRUDER 39 // X offset: -left  +right  [of the nozzle]
+//#define Y_PROBE_OFFSET_FROM_EXTRUDER  0 // Y offset: -front +behind [the nozzle]
+//#define Z_PROBE_OFFSET_FROM_EXTRUDER  0 // Z offset: -below +above  [the nozzle]
 
 //ANET A6 with BLTouch/3D-Touch betwen Fan and Belt
 // (mount: https://github.com/ralf-e/ANET_A6_modifications/tree/master/A6_X-Axis)
@@ -947,34 +947,23 @@
 #define Z_HOME_DIR -1
 
 // @section machine
-
-// The size of the print bed
-//#define X_BED_SIZE 200
-//#define Y_BED_SIZE 200
-
-// Travel limits (mm) after homing, corresponding to endstop positions.
-//#define X_MIN_POS 0
-//#define Y_MIN_POS 0
-//#define X_MAX_POS X_BED_SIZE
-//#define Y_MAX_POS Y_BED_SIZE
-//#define Z_MIN_POS 0
-//#define Z_MAX_POS 200
-
 // ANET A6 Firmware V2.0 defaults:
-//#define X_BED_SIZE 220
-//#define Y_BED_SIZE 220
-//#define X_MIN_POS 0
-//#define Y_MIN_POS 0
-//#define Z_MIN_POS 0
-//#define Z_MAX_POS 250
+#define X_BED_SIZE 220
+#define Y_BED_SIZE 220
+#define X_MIN_POS 0
+#define Y_MIN_POS 0
+#define Z_MIN_POS -3
+#define X_MAX_POS 220
+#define Y_MAX_POS 220
+#define Z_MAX_POS 220
 
 // ANET A6, X0/Y0 0 front left bed edge :
-#define X_BED_SIZE 222
-#define Y_BED_SIZE 222
-#define X_MIN_POS -3
-#define Y_MIN_POS -5
-#define Z_MIN_POS 0
-#define Z_MAX_POS 230
+//#define X_BED_SIZE 222
+//#define Y_BED_SIZE 222
+//#define X_MIN_POS -3
+//#define Y_MIN_POS -5
+//#define Z_MIN_POS 0
+//#define Z_MAX_POS 220
 
 // ANET A6 with new X-Axis / modded Y-Axis:
 //#define X_BED_SIZE 235
@@ -992,8 +981,6 @@
 //#define Z_MIN_POS 0
 //#define Z_MAX_POS 230
 
-#define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
 
 /**
  * Software Endstops
@@ -1088,7 +1075,7 @@
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1232,7 +1219,7 @@
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MBL_Z_STEP 0.025    // Step size while manually probing Z axis.
-  #define LCD_PROBE_Z_RANGE 4 // Z Range centered on Z_MIN_POS for LCD Z adjustment
+  #define LCD_PROBE_Z_RANGE 10 // Z Range centered on Z_MIN_POS for LCD Z adjustment
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
@@ -1260,7 +1247,7 @@
 // For DELTA this is the top-center of the Cartesian print volume.
 //#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
-//#define MANUAL_Z_HOME_POS 0
+//#define MANUAL_Z_HOME_POS 4
 
 // ANET A6 with new X-Axis / modded Y-Axis:
 //#define MANUAL_X_HOME_POS X_MIN_POS - 8
