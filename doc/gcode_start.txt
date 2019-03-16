@@ -1,0 +1,40 @@
+G21 ;metric values
+G90 ;absolute positioning
+G10 ; retract filament
+M82 ;set extruder to absolute mode
+M107 ;start with the fan off
+G28 ; Set Home Coordinates
+M420 S1 ; Turn on the Eeprom Bed Mesh
+G0 X0 Y0 F9000 ; Go to front
+G0 Z0.2 ; Drop to bed
+G92 E0 ; zero the extruded length
+G1 X40 E25 F500 ; Extrude 25mm of filament in a 4cm line
+G92 E0 ; zero the extruded length
+G1 E-1 F500 ; Retract a little
+G1 X80 F4000 ; Quickly wipe away from the filament line
+M117 Printing..
+
+==================================================================
+
+G21 ;metric values
+G90 ;absolute positioning
+G10 ; retract filament
+M82 ;set extruder to absolute mode
+M107 ;start with the fan off
+G28 ; Set Home Coordinates
+M420 S1 ; Turn on the Eeprom Bed Mesh
+G1 Z10.0 F300 ;move the platform down 10mm
+G92 E0 ;zero the extruded length
+G1 F200 E4 ;extrude 4mm of feed stock
+G92 E0 ;zero the extruded length again
+G1 E-1 F500 ; Retract a little
+M0 S5 ;wait 5 seconds
+G1 F9000
+M117 Printing...
+
+
+==================================================================
+If EEPROM_SETTINGS is enabled, the home offsets are saved with M500, loaded with M501, and reset with M502.
+M428 sets home offsets so the current position aligns to the native home position.
+
+M206 Z-0.2

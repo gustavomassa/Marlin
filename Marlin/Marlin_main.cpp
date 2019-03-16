@@ -1105,7 +1105,7 @@ inline void get_serial_commands() {
               case 5:
             #endif
               SERIAL_ERRORLNPGM(MSG_ERR_STOPPED);
-              LCD_MESSAGEPGM(MSG_STOPPED);
+              //LCD_MESSAGEPGM(MSG_STOPPED);
               break;
           }
         }
@@ -1192,7 +1192,7 @@ inline void get_serial_commands() {
           else {
             SERIAL_PROTOCOLLNPGM(MSG_FILE_PRINTED);
             #if ENABLED(PRINTER_EVENT_LEDS)
-              LCD_MESSAGEPGM(MSG_INFO_COMPLETED_PRINTS);
+              //LCD_MESSAGEPGM(MSG_INFO_COMPLETED_PRINTS);
               leds.set_green();
               #if HAS_RESUME_CONTINUE
                 lights_off_after_print = true;
@@ -2415,7 +2415,7 @@ void clean_up_after_endstop_or_probe_move() {
         if (IsRunning()) {
           SERIAL_ERROR_START();
           SERIAL_ERRORLNPGM("Z-Probe failed");
-          LCD_ALERTMESSAGEPGM("Err: ZPROBE");
+          //LCD_ALERTMESSAGEPGM("Err: ZPROBE");
         }
         stop();
         return true;
@@ -2445,7 +2445,7 @@ void clean_up_after_endstop_or_probe_move() {
       // Wait for bed to heat back up between probing points
       if (thermalManager.isHeatingBed()) {
         serialprintPGM(msg_wait_for_bed_heating);
-        LCD_MESSAGEPGM(MSG_BED_HEATING);
+        //LCD_MESSAGEPGM(MSG_BED_HEATING);
         while (thermalManager.isHeatingBed()) safe_delay(200);
         lcd_reset_status();
       }
@@ -2674,7 +2674,7 @@ void clean_up_after_endstop_or_probe_move() {
     feedrate_mm_s = old_feedrate_mm_s;
 
     if (isnan(measured_z)) {
-      LCD_MESSAGEPGM(MSG_ERR_PROBING_FAILED);
+      //LCD_MESSAGEPGM(MSG_ERR_PROBING_FAILED);
       SERIAL_ERROR_START();
       SERIAL_ERRORLNPGM(MSG_ERR_PROBING_FAILED);
     }
@@ -3193,7 +3193,7 @@ static void do_homing_move(const AxisEnum axis, const float distance, const floa
     // Wait for bed to heat back up between probing points
     if (axis == Z_AXIS && distance < 0 && thermalManager.isHeatingBed()) {
       serialprintPGM(msg_wait_for_bed_heating);
-      LCD_MESSAGEPGM(MSG_BED_HEATING);
+      //LCD_MESSAGEPGM(MSG_BED_HEATING);
       while (thermalManager.isHeatingBed()) safe_delay(200);
       lcd_reset_status();
     }
@@ -3766,7 +3766,7 @@ inline void gcode_G4() {
     SERIAL_ECHOLNPGM(MSG_Z_MOVE_COMP);
   #endif
 
-  if (!lcd_hasstatus()) LCD_MESSAGEPGM(MSG_DWELL);
+  //if (!lcd_hasstatus()) LCD_MESSAGEPGM(MSG_DWELL);
 
   dwell(dwell_ms);
 }
@@ -4322,7 +4322,7 @@ inline void gcode_G4() {
 
     // Disallow Z homing if X or Y are unknown
     if (!TEST(axis_known_position, X_AXIS) || !TEST(axis_known_position, Y_AXIS)) {
-      LCD_MESSAGEPGM(MSG_ERR_Z_HOMING);
+      //LCD_MESSAGEPGM(MSG_ERR_Z_HOMING);
       SERIAL_ECHO_START();
       SERIAL_ECHOLNPGM(MSG_ERR_Z_HOMING);
       return;
@@ -4365,7 +4365,7 @@ inline void gcode_G4() {
       homeaxis(Z_AXIS);
     }
     else {
-      LCD_MESSAGEPGM(MSG_ZPROBE_OUT);
+      //LCD_MESSAGEPGM(MSG_ZPROBE_OUT);
       SERIAL_ECHO_START();
       SERIAL_ECHOLNPGM(MSG_ZPROBE_OUT);
     }
@@ -6923,7 +6923,7 @@ void report_xyz_from_stepper_position() {
       if (has_message)
         lcd_setstatus(args, true);
       else {
-        LCD_MESSAGEPGM(MSG_USERWAIT);
+        //LCD_MESSAGEPGM(MSG_USERWAIT);
         #if ENABLED(LCD_PROGRESS_BAR) && PROGRESS_MSG_EXPIRE > 0
           dontExpireStatus();
         #endif
@@ -7081,7 +7081,7 @@ void report_xyz_from_stepper_position() {
  * M17: Enable power on all stepper motors
  */
 inline void gcode_M17() {
-  LCD_MESSAGEPGM(MSG_NO_MOVE);
+  //LCD_MESSAGEPGM(MSG_NO_MOVE);
   enable_all_steppers();
 }
 
@@ -7362,7 +7362,7 @@ inline void gcode_M17() {
       #if ENABLED(ULTIPANEL)
         if (show_lcd) // Show status screen
           lcd_advanced_pause_show_message(ADVANCED_PAUSE_MESSAGE_STATUS);
-        LCD_MESSAGEPGM(MSG_M600_TOO_COLD);
+        //LCD_MESSAGEPGM(MSG_M600_TOO_COLD);
       #endif
 
       return false; // unable to reach safe temperature
@@ -9100,7 +9100,7 @@ inline void gcode_M81() {
   #endif
 
   #if ENABLED(ULTIPANEL)
-    LCD_MESSAGEPGM(MACHINE_NAME " " MSG_OFF ".");
+    //LCD_MESSAGEPGM(MACHINE_NAME " " MSG_OFF ".");
   #endif
 }
 
@@ -10952,7 +10952,7 @@ void quickstop_stepper() {
       if (!WITHIN(diff[i], -20, 20)) {
         SERIAL_ERROR_START();
         SERIAL_ERRORLNPGM(MSG_ERR_M428_TOO_FAR);
-        LCD_ALERTMESSAGEPGM("Err: Too far!");
+        //LCD_ALERTMESSAGEPGM("Err: Too far!");
         BUZZ(200, 40);
         return;
       }
@@ -10960,7 +10960,7 @@ void quickstop_stepper() {
 
     LOOP_XYZ(i) set_home_offset((AxisEnum)i, diff[i]);
     report_current_position();
-    LCD_MESSAGEPGM(MSG_HOME_OFFSETS_APPLIED);
+    //LCD_MESSAGEPGM(MSG_HOME_OFFSETS_APPLIED);
     BUZZ(100, 659);
     BUZZ(100, 698);
   }
@@ -14973,7 +14973,7 @@ void manage_inactivity(const bool ignore_stepper_queue/*=false*/) {
     if (!IS_SD_PRINTING() && !READ(HOME_PIN)) {
       if (!homeDebounceCount) {
         enqueue_and_echo_commands_P(PSTR("G28"));
-        LCD_MESSAGEPGM(MSG_AUTO_HOME);
+        //LCD_MESSAGEPGM(MSG_AUTO_HOME);
       }
       if (homeDebounceCount < HOME_DEBOUNCE_DELAY)
         homeDebounceCount++;
@@ -15191,7 +15191,7 @@ void stop() {
     Stopped_gcode_LastN = gcode_LastN; // Save last g_code for restart
     SERIAL_ERROR_START();
     SERIAL_ERRORLNPGM(MSG_ERR_STOPPED);
-    LCD_MESSAGEPGM(MSG_STOPPED);
+    //LCD_MESSAGEPGM(MSG_STOPPED);
     safe_delay(350);       // allow enough time for messages to get out before stopping
     Running = false;
   }
