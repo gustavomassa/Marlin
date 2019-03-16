@@ -1,0 +1,13 @@
+M502 ; reset EEPROM
+M500 ; save factory settings to EEPROM
+M503 ; get EEPROM settings
+
+G28 Z ; home Z
+G1 F60 Z0 ; go to true Z zero position
+M211 S0 ; turn OFF software endtops
+
+M851 Z -2.60 ;set Z offset
+M211 S1 ; turn ON software endtops
+M500 ; save new settings to EEPROM
+M501 ; load EEPROM settings
+M503 ; check EEPROM settings again
