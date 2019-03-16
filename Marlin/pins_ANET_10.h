@@ -171,7 +171,7 @@
     // Pin definitions for the Anet A6 Full Graphics display and the RepRapDiscount Full Graphics
     // display using an adapter board  // https://go.aisler.net/benlye/anet-lcd-adapter/pcb
     // See below for alternative pin definitions for use with https://www.thingiverse.com/thing:2103748
-    //#define SERVO0_PIN       29   // free for BLTouch/3D-Touch
+
     #define BEEPER_PIN       17
     #define LCD_PINS_RS      27
     #define LCD_PINS_ENABLE  28
@@ -179,6 +179,26 @@
     #define BTN_EN1          11
     #define BTN_EN2          10
     #define BTN_ENC          16
+
+    // A8
+    //#define BEEPER_PIN         28
+    //#define LCD_PINS_RS        30
+    //#define LCD_PINS_ENABLE    29
+    //#define LCD_PINS_D4        17
+    //#define BTN_EN1            11
+    //#define BTN_EN2            10
+    //#define BTN_ENC            16
+
+    // A6
+    //#define SERVO0_PIN       29   // free for BLTouch/3D-Touch
+    //#define BEEPER_PIN       17
+    //#define LCD_PINS_RS      27
+    //#define LCD_PINS_ENABLE  28
+    //#define LCD_PINS_D4      30
+    //#define BTN_EN1          11
+    //#define BTN_EN2          10
+    //#define BTN_ENC          16
+    
     #ifndef ST7920_DELAY_1
       #define ST7920_DELAY_1 DELAY_NS(0)
     #endif
