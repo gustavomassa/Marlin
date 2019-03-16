@@ -2,7 +2,8 @@
 Settings to Anet A6 with Anet Board 1.5 and Marlin 1.1.9
 - LCD Support
 - SD Card Support
-- Bilinear Bed Leveling Support (LCD and Manual Probe)
+- BLTouch
+- Bilinear Bed Leveling
 
 ## Marlin 3D Printer Firmware
 <img align="right" src="../../raw/1.1.x/buildroot/share/pixmaps/logo/marlin-250.png" />
