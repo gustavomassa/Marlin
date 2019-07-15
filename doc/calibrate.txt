@@ -2,12 +2,36 @@ M502 ; reset EEPROM
 M500 ; save factory settings to EEPROM
 M503 ; get EEPROM settings
 
+G28 X
+G28 Y
 G28 Z ; home Z
 G1 F60 Z0 ; go to true Z zero position
 M211 S0 ; turn OFF software endtops
 
-M851 Z -2.60 ;set Z offset
+# Calibrate Z now using 0.1 +- (Pronterface)
+
+M114 ; check current position
+
+M851 Z -2.20 ;set Z offset
 M211 S1 ; turn ON software endtops
 M500 ; save new settings to EEPROM
 M501 ; load EEPROM settings
 M503 ; check EEPROM settings again
+
+
+================================================================
+
+# Lets test the calibration
+
+G21 ; milimeters
+G90 ; absolute coords
+G1 Z10 ; move the extruder up out of the way
+G28 ; Home all axes
+#M565 Zx.x ; set the Z offset value
+G29 ; probe bed
+G28 X0 Y0 ; home X and Y
+G1 Z5.00 F4800 ; get ready to move by lifting the extruder
+G1 X110 Y110 F4800 ; move to centre of the bed
+G1 Z0.3 ; Move extruder to 0.3mm above the centre of the bed
+
+When this is done the extruder should be sitting exactly 0.3mm above the centre of the bed. The height can be checked by sliding a piece of paper under the extruder and moving it down manually until the paper height 0.1mm is reached. If it is not at the correct height, adjust the Z offset and repeat the test.
