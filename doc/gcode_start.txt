@@ -1,6 +1,26 @@
 G21 ;metric values
 G90 ;absolute positioning
 G10 ; retract filament
+G1 Z10 ; move the extruder up out of the way
+M82 ;set extruder to absolute mode
+M107 ;start with the fan off
+M420 S1 ; Turn on the Eeprom Bed Mesh
+G92 E0 ;zero the extruded length
+G28 ; Set Home Coordinates
+G29 ; bed level
+G28 X0 Y0 ; home X and Y
+G1 F200 E4 ;extrude 4mm of feed stock
+G92 E0 ;zero the extruded length again
+G1 E-1 F500 ; Retract a little
+M0 S5 ;wait 5 seconds
+G1 F9000
+M117 Printing...
+
+=================================================================
+
+G21 ;metric values
+G90 ;absolute positioning
+G10 ; retract filament
 M82 ;set extruder to absolute mode
 M107 ;start with the fan off
 G28 ; Set Home Coordinates
