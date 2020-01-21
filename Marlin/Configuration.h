@@ -686,8 +686,8 @@
  */
 // ANET A6 Firmware V2.0 defaults (jerk):
 // Vxy-jerk: 10, Vz-jerk: +000.30, Ve-jerk: 5
-#define DEFAULT_XJERK                 10.0
-#define DEFAULT_YJERK                 10.0
+#define DEFAULT_XJERK                 9.0
+#define DEFAULT_YJERK                 9.0
 #define DEFAULT_ZJERK                  0.3
 #define DEFAULT_EJERK                  5.0
 
