@@ -783,7 +783,7 @@
  */
 
 //ANET A6 with BLTouch/3D-Touch Front mount (mount: https://https://www.thingiverse.com/thing:2451350)
-#define X_PROBE_OFFSET_FROM_EXTRUDER 0 // X offset: -left  +right  [of the nozzle]
+#define X_PROBE_OFFSET_FROM_EXTRUDER -10.0 // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 0 // Y offset: -front +behind [the nozzle]
 #define Z_PROBE_OFFSET_FROM_EXTRUDER -2.10 // Z offset: -below +above  [the nozzle]
 
@@ -890,8 +890,8 @@
 // ANET A6 Firmware V2.0 defaults:
 
 //size of the print bed
-#define X_BED_SIZE 220
-#define Y_BED_SIZE 220
+#define X_BED_SIZE 216
+#define Y_BED_SIZE 216
 
 //travel limits (mm) after homing, corresponding to endstop positions
 #define X_MIN_POS 0
