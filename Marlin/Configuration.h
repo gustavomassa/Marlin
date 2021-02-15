@@ -785,7 +785,7 @@
 //ANET A6 with BLTouch/3D-Touch Front mount (mount: https://https://www.thingiverse.com/thing:2451350)
 #define X_PROBE_OFFSET_FROM_EXTRUDER 0 // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 0 // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -2.95 // Z offset: -below +above  [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -3.00 // Z offset: -below +above  [the nozzle]
 
 // The number of probes to perform at each point.
 //   Set to 2 for a fast/slow probe, using the second probe result.
