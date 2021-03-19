@@ -9452,6 +9452,13 @@ inline void gcode_M115() {
       #endif
     );
 
+    // ARC_SUPPORT (G2-G3)
+    cap_line(PSTR("ARCS")
+      #if ENABLED(ARC_SUPPORT)
+        , true
+      #endif
+    );
+
   #endif // EXTENDED_CAPABILITIES_REPORT
 }
 
