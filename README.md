@@ -6,7 +6,8 @@ Settings to Anet A6 with Anet Board 1.5 and Marlin 1.1.9.1
 
 # Compile
 - Tools > Boards > Board Manager -> Select and install version 1.6.23 of Arduino AVR boards to be able to compile
-- Download and install the Anet 1.0 board [https://github.com/SkyNet3D/anet-board]https://github.com/SkyNet3D/anet-board)
+- Download and install the Anet 1.0 board [https://github.com/SkyNet3D/anet-board](https://github.com/SkyNet3D/anet-board)
+- Using PlatformIO [https://marlinfw.org/docs/basics/install_platformio_vscode.html](https://marlinfw.org/docs/basics/install_platformio_vscode.html)
 
 ## Marlin 3D Printer Firmware
 <img align="right" src="../../raw/1.1.x/buildroot/share/pixmaps/logo/marlin-250.png" />
