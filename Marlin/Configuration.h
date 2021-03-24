@@ -373,9 +373,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // ANET A6 auto PID with M303 S205 U1
-  #define DEFAULT_Kp 18.56
-  #define DEFAULT_Ki 1.21
-  #define DEFAULT_Kd 71.06
+  #define DEFAULT_Kp 18.90
+  #define DEFAULT_Ki 1.34
+  #define DEFAULT_Kd 66.58
 
 #endif // PIDTEMP
 
@@ -413,9 +413,9 @@
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
   // ANET A6 auto PID with M303 E-1 S70 U1
-  #define DEFAULT_bedKp 1120.44
-  #define DEFAULT_bedKi 213.72
-  #define DEFAULT_bedKd 1468.48
+  #define DEFAULT_bedKp 359.05
+  #define DEFAULT_bedKi 49.81
+  #define DEFAULT_bedKd 647.10
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -589,7 +589,7 @@
 // ANET A6 Firmwae V2.0 defaults: (steps/mm)
 // Xsteps/mm: +100.0, Ysteps/mm: +100.0, Zsteps/mm: +0400.0, eSteps/mm: +0095.0
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100, 100, 400, 95}
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100, 100, 400, 122}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100, 100, 400, 98}
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -615,7 +615,7 @@
 // ANET A6 Firmware V2.0 defaults (Amax):
 // Amx x: 9000, Amax Y: 5000, Amax z: 50, Amax e: 10000
 //#define DEFAULT_MAX_ACCELERATION      { 9000, 5000, 50, 10000 }
-#define DEFAULT_MAX_ACCELERATION      { 9000, 5000, 50, 8000 }
+#define DEFAULT_MAX_ACCELERATION      { 9000, 5000, 50, 10000 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -785,7 +785,7 @@
 //ANET A6 with BLTouch/3D-Touch Front mount (mount: https://https://www.thingiverse.com/thing:2451350)
 #define X_PROBE_OFFSET_FROM_EXTRUDER 0 // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 0 // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -3.00 // Z offset: -below +above  [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -0.8 // Z offset: -below +above  [the nozzle]
 
 // The number of probes to perform at each point.
 //   Set to 2 for a fast/slow probe, using the second probe result.
@@ -892,6 +892,7 @@
 //size of the print bed
 #define X_BED_SIZE 216
 #define Y_BED_SIZE 216
+#define Z_BED_SIZE 220
 
 //travel limits (mm) after homing, corresponding to endstop positions
 #define X_MIN_POS 0
@@ -899,7 +900,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 220
+#define Z_MAX_POS Z_BED_SIZE
 
 //probe limits
 #define MIN_PROBE_X X_MIN_POS
@@ -1041,7 +1042,7 @@
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
 //ANET A6 with BLTouch/3D-Touch Front mount (mount: https://https://www.thingiverse.com/thing:2451350)
-#define LEFT_PROBE_BED_POSITION (MIN_PROBE_EDGE + 10) //10 is the bltouch offset from extruder X axis
+#define LEFT_PROBE_BED_POSITION (10) //10 is the bltouch offset from extruder X axis
 #define RIGHT_PROBE_BED_POSITION ((X_BED_SIZE + 10) - MIN_PROBE_EDGE)
 #define FRONT_PROBE_BED_POSITION (MIN_PROBE_EDGE + 50) //50 is the bltouch offset from extruder Y axis
 #define BACK_PROBE_BED_POSITION Y_BED_SIZE
