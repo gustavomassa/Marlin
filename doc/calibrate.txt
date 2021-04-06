@@ -35,3 +35,11 @@ G1 X110 Y110 F4800 ; move to centre of the bed
 G1 Z0.3 ; Move extruder to 0.3mm above the centre of the bed
 
 When this is done the extruder should be sitting exactly 0.3mm above the centre of the bed. The height can be checked by sliding a piece of paper under the extruder and moving it down manually until the paper height 0.1mm is reached. If it is not at the correct height, adjust the Z offset and repeat the test.
+
+
+=================================================================
+
+# PID tune for hotend
+M303 E0 C16 S210
+# PID tune for bed
+M303 E-1 C16 S60
