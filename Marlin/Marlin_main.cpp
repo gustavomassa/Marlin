@@ -2054,7 +2054,12 @@ void clean_up_after_endstop_or_probe_move() {
   #if QUIET_PROBING
     void probing_pause(const bool p) {
       #if ENABLED(PROBING_HEATERS_OFF)
-        thermalManager.pause(p);
+        #if ENABLED(PROBING_HOTEND_ALWAYS_OFF)
+          thermalManager.pause_hotend(true);
+          thermalManager.pause_bed(p);
+        #else
+          thermalManager.pause(p);
+        #endif
       #endif
       #if ENABLED(PROBING_FANS_OFF)
         fans_pause(p);
@@ -5448,6 +5453,12 @@ void home_all_axes() { gcode_G28(true); }
 
       measured_z = 0;
 
+      // pause hotend
+      #if ENABLED(PROBING_HOTEND_ALWAYS_OFF)
+          thermalManager.pause_hotend(true);
+      #endif
+
+
       #if ABL_GRID
 
         bool zig = PR_OUTER_END & 1;  // Always end at RIGHT and BACK_PROBE_BED_POSITION
@@ -5555,6 +5566,11 @@ void home_all_axes() { gcode_G28(true); }
         set_bed_leveling_enabled(abl_should_enable);
         measured_z = NAN;
       }
+
+      // Unpause hotend
+      #if ENABLED(PROBING_HOTEND_ALWAYS_OFF)
+        thermalManager.pause_hotend(false);
+      #endif
     }
     #endif // !PROBE_MANUALLY
 
