@@ -223,6 +223,8 @@ uint8_t Temperature::soft_pwm_amount[HOTENDS];
 
 #if ENABLED(PROBING_HEATERS_OFF)
   bool Temperature::paused;
+  bool Temperature::hotendPaused;
+  bool Temperature::bedPaused;
 #endif
 
 #if HEATER_IDLE_HANDLER
@@ -1536,14 +1538,33 @@ void Temperature::disable_all_heaters() {
   void Temperature::pause(const bool p) {
     if (p != paused) {
       paused = p;
+
+      pause_hotend(p);
+      pause_bed(p);
+    }
+  }
+
+  void Temperature::pause_hotend(const bool p) {
+    if (p != hotendPaused) {
+      hotendPaused = p;
       if (p) {
         HOTEND_LOOP() start_heater_idle_timer(e, 0); // timeout immediately
+      }
+      else {
+        HOTEND_LOOP() reset_heater_idle_timer(e);
+      }
+    }
+  }
+
+  void Temperature::pause_bed(const bool p) {
+    if (p != bedPaused) {
+      bedPaused = p;
+      if (p) {
         #if HAS_HEATED_BED
           start_bed_idle_timer(0); // timeout immediately
         #endif
       }
       else {
-        HOTEND_LOOP() reset_heater_idle_timer(e);
         #if HAS_HEATED_BED
           reset_bed_idle_timer();
         #endif

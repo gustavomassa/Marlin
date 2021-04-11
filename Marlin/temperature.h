@@ -290,6 +290,8 @@ class Temperature {
 
     #if ENABLED(PROBING_HEATERS_OFF)
       static bool paused;
+      static bool hotendPaused;
+      static bool bedPaused;
     #endif
 
     #if HEATER_IDLE_HANDLER
@@ -541,6 +543,12 @@ class Temperature {
     #if ENABLED(PROBING_HEATERS_OFF)
       static void pause(const bool p);
       FORCE_INLINE static bool is_paused() { return paused; }
+
+      static void pause_hotend(const bool p);
+      FORCE_INLINE static bool is_hotend_paused() { return hotendPaused; }
+
+      static void pause_bed(const bool p);
+      FORCE_INLINE static bool is_bed_paused() { return hotendPaused; }
     #endif
 
     #if HEATER_IDLE_HANDLER
