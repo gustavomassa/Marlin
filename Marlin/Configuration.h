@@ -615,7 +615,7 @@
 // ANET A6 Firmware V2.0 defaults (Amax):
 // Amx x: 9000, Amax Y: 5000, Amax z: 50, Amax e: 10000
 //#define DEFAULT_MAX_ACCELERATION      { 9000, 5000, 50, 10000 }
-#define DEFAULT_MAX_ACCELERATION      { 9000, 5000, 50, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 9000, 5000, 50, 9000 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -651,8 +651,8 @@
 // Vxy-jerk: 10, Vz-jerk: +000.30, Ve-jerk: 5
 #define DEFAULT_XJERK                 9.0
 #define DEFAULT_YJERK                 9.0
-#define DEFAULT_ZJERK                  0.3
-#define DEFAULT_EJERK                  7.0
+#define DEFAULT_ZJERK                  0.5
+#define DEFAULT_EJERK                  5.0
 
 /**
  * S-Curve Acceleration
@@ -747,6 +747,7 @@
 #define PROBING_HEATERS_OFF       // Turn heaters off when probing
 #if ENABLED(PROBING_HEATERS_OFF)
   //#define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
+  #define PROBING_HOTEND_ALWAYS_OFF       // Disable hotend until all the probing is completed (to avoid filament debris)
 #endif
 #define PROBING_FANS_OFF          // Turn fans off when probing
 #define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
@@ -892,7 +893,7 @@
 //size of the print bed
 #define X_BED_SIZE 216
 #define Y_BED_SIZE 216
-#define Z_BED_SIZE 220
+#define Z_BED_SIZE 216
 
 //travel limits (mm) after homing, corresponding to endstop positions
 #define X_MIN_POS 0
@@ -1286,8 +1287,8 @@
 // @section temperature
 
 // Preheat Constants
-#define PREHEAT_1_TEMP_HOTEND 200
-#define PREHEAT_1_TEMP_BED     60
+#define PREHEAT_1_TEMP_HOTEND 210
+#define PREHEAT_1_TEMP_BED     65
 #define PREHEAT_1_FAN_SPEED     0 // ANET A6 Default is 255
 
 #define PREHEAT_2_TEMP_HOTEND 230
