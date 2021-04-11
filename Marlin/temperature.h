@@ -656,6 +656,8 @@ class Temperature {
 
     #endif // THERMAL_PROTECTION
 
+    static bool ignore_hotend_checks();
+
 };
 
 extern Temperature thermalManager;
