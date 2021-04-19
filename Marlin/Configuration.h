@@ -1043,8 +1043,8 @@
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
 //ANET A6 with BLTouch/3D-Touch Front mount (mount: https://https://www.thingiverse.com/thing:2451350)
-#define LEFT_PROBE_BED_POSITION (10) //10 is the bltouch offset from extruder X axis
-#define RIGHT_PROBE_BED_POSITION ((X_BED_SIZE + 10) - MIN_PROBE_EDGE)
+#define LEFT_PROBE_BED_POSITION (5) //10 is the bltouch offset from extruder X axis
+#define RIGHT_PROBE_BED_POSITION ((X_BED_SIZE) - MIN_PROBE_EDGE)
 #define FRONT_PROBE_BED_POSITION (MIN_PROBE_EDGE + 50) //50 is the bltouch offset from extruder Y axis
 #define BACK_PROBE_BED_POSITION Y_BED_SIZE
 
