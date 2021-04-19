@@ -548,7 +548,7 @@ class Temperature {
       FORCE_INLINE static bool is_hotend_paused() { return hotendPaused; }
 
       static void pause_bed(const bool p);
-      FORCE_INLINE static bool is_bed_paused() { return hotendPaused; }
+      FORCE_INLINE static bool is_bed_paused() { return bedPaused; }
     #endif
 
     #if HEATER_IDLE_HANDLER
@@ -655,8 +655,6 @@ class Temperature {
       #endif
 
     #endif // THERMAL_PROTECTION
-
-    static bool ignore_hotend_checks();
 
 };
 

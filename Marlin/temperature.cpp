@@ -740,14 +740,6 @@ float Temperature::get_pid_output(const int8_t e) {
   }
 #endif // PIDTEMPBED
 
-bool Temperature::ignore_hotend_checks() {
-  #if ENABLED(PROBING_HOTEND_ALWAYS_OFF)
-    return hotendPaused;
-  #endif
-  
-  return false;
-}
-
 /**
  * Manage heating activities for extruder hot-ends and a heated bed
  *  - Acquire updated temperature readings
@@ -788,23 +780,19 @@ void Temperature::manage_heater() {
     #endif
 
     #if ENABLED(THERMAL_PROTECTION_HOTENDS)
-        // Check for thermal runaway
-        if (!ignore_hotend_checks) {
-          thermal_runaway_protection(&thermal_runaway_state_machine[e], &thermal_runaway_timer[e], current_temperature[e], target_temperature[e], e, THERMAL_PROTECTION_PERIOD, THERMAL_PROTECTION_HYSTERESIS);
-        }
+      // Check for thermal runaway
+      thermal_runaway_protection(&thermal_runaway_state_machine[e], &thermal_runaway_timer[e], current_temperature[e], target_temperature[e], e, THERMAL_PROTECTION_PERIOD, THERMAL_PROTECTION_HYSTERESIS);
     #endif
 
     soft_pwm_amount[e] = (current_temperature[e] > minttemp[e] || is_preheating(e)) && current_temperature[e] < maxttemp[e] ? (int)get_pid_output(e) >> 1 : 0;
 
     #if WATCH_HOTENDS
-      if (!ignore_hotend_checks) {
-        // Make sure temperature is increasing
-        if (watch_heater_next_ms[e] && ELAPSED(ms, watch_heater_next_ms[e])) { // Time to check this extruder?
-          if (degHotend(e) < watch_target_temp[e])                             // Failed to increase enough?
-            _temp_error(e, PSTR(MSG_T_HEATING_FAILED), TEMP_ERR_PSTR(MSG_HEATING_FAILED_LCD, e));
-          else                                                                 // Start again if the target is still far off
-            start_watching_heater(e);
-        }
+      // Make sure temperature is increasing
+      if (watch_heater_next_ms[e] && ELAPSED(ms, watch_heater_next_ms[e])) { // Time to check this extruder?
+        if (degHotend(e) < watch_target_temp[e])                             // Failed to increase enough?
+          _temp_error(e, PSTR(MSG_T_HEATING_FAILED), TEMP_ERR_PSTR(MSG_HEATING_FAILED_LCD, e));
+        else                                                                 // Start again if the target is still far off
+          start_watching_heater(e);
       }
     #endif
 
