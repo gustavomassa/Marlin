@@ -12,11 +12,31 @@ M211 S0 ; turn OFF software endtops
 
 M114 ; check current position
 
-M851 Z -2.20 ;set Z offset
+M851 Z -1.50 ;set Z offset
 M211 S1 ; turn ON software endtops
 M500 ; save new settings to EEPROM
 M501 ; load EEPROM settings
 M503 ; check EEPROM settings again
+
+
+================================================================
+# Calibrate Extruder
+
+# Steps per unit
+M92 E98.00
+
+# Maximum feedrates (units/s)
+M203 E50.00
+
+# Maximum Acceleration (units/s2)
+M201 E8000
+
+# Printing and travel accelerations
+M204 P1000.00 T3000.00
+
+# Jerk
+M205 E20.00
+
 
 
 ================================================================

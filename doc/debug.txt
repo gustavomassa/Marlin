@@ -1,3 +1,18 @@
 char buff[10];
 snprintf (buff, sizeof(buff), "%f", angular_travel);
 SERIAL_ECHOPAIR("at1: ", buff);
+
+    /**
+        SERIAL_ECHO_START();
+        SERIAL_ECHOPGM("Thermal Thermal Runaway Running. Heater ID: ");
+        if (heater_id < 0) SERIAL_ECHOPGM("bed"); else SERIAL_ECHO(heater_id);
+        SERIAL_ECHOPAIR(" ;  State:", *state);
+        SERIAL_ECHOPAIR(" ;  Timer:", *timer);
+        SERIAL_ECHOPAIR(" ;  Temperature:", current);
+        SERIAL_ECHOPAIR(" ;  Target Temp:", target);
+        if (heater_id >= 0)
+          SERIAL_ECHOPAIR(" ;  Idle Timeout:", heater_idle_timeout_exceeded[heater_id]);
+        else
+          SERIAL_ECHOPAIR(" ;  Idle Timeout:", bed_idle_timeout_exceeded);
+        SERIAL_EOL();
+    */
